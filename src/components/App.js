@@ -8,7 +8,7 @@ class App extends React.Component {
         return (
             <div className="catch-of-the-day">
                 <div className="menu">
-                    <Header tagline="Fresh 🌊 🐟🦈🦀 Market" />
+                    <Header tagline="Fresh 🌊 🐟🦈🦀 Market 6" />
                 </div>
                 <Order />
                 <Inventory />
