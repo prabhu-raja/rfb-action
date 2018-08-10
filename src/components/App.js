@@ -23,13 +23,22 @@ class App extends React.Component {
         });
     };
 
+    addToOrder = objOrder => {
+        // 1. Take a copy of existing state
+        const bkpOrder = {...this.state.order};
+        // 2. Either add to the order, or update the number in our order
+        bkpOrder[objOrder] = bkpOrder[objOrder] + 1 || 1;
+        //3. Call setState to update our state object.
+        this.setState({
+            order: bkpOrder
+        });
+    }
+
     loadSampleFishes = () => {
         this.setState({
             fishes: sampleFishes
         });
     }
-
-   
 
     render() {
         return (
@@ -39,8 +48,12 @@ class App extends React.Component {
                     <ul className="fishes">
                         {
                             Object.keys(this.state.fishes).map(val => (
-                                <Fish key={val} details={this.state.fishes[val]}></Fish>
-                                ))
+                                <Fish 
+                                    key={val} 
+                                    details={this.state.fishes[val]} 
+                                    addToOrder={this.addToOrder}>
+                                </Fish>
+                            ))
                         }
                     </ul>
                 </div>
